@@ -7,10 +7,7 @@ st.set_page_config(page_title="Kuber AI", page_icon="🤖", layout="wide")
 # You do NOT need to manually switch pages using st.switch_page in the main app file.
 
 st.title("Kuber AI")
-st.image(
-    r"c:\Users\BABNEEK\OneDrive\Desktop\projects\KuberAI-2.O\frontend\assets\robot.png",
-    width=300
-)
+# st.image("assets/robot.png", width=300)
 st.markdown("Welcome to Kuber AI! Please use the sidebar to navigate between Login, Welcome, Chat, and Invest pages.")
 
 # Optionally, you can display a message or logo here.
