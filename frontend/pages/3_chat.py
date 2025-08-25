@@ -58,6 +58,6 @@ if st.button("Send", key="send_btn"):
         except Exception as e:
             bot_answer = f"Error: {e}"
         st.session_state.chat_history.append({"role": "bot", "content": bot_answer})
-        st.experimental_rerun()
+        st.rerun()
 
 st.markdown("🔒 Your info is secure and private.")
