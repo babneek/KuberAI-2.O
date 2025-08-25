@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 
+API_URL = "https://kuberai-2o-production.up.railway.app"
+
 if "user" not in st.session_state:
     st.warning("Please login first!")
     st.stop()
@@ -15,7 +17,7 @@ if "chat_query" in st.session_state and st.session_state.chat_query:
     user_input = st.session_state.chat_query
     st.session_state.chat_history.append({"role": "user", "content": user_input})
     try:
-        response = requests.post("http://127.0.0.1:8000/chat", json={"query": user_input})
+        response = requests.post(f"{API_URL}/chat", json={"query": user_input})
         bot_answer = response.json().get("answer", "Sorry, no response.")
     except Exception as e:
         bot_answer = f"Error: {e}"
@@ -51,7 +53,7 @@ if st.button("Send", key="send_btn"):
     if user_input:
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         try:
-            response = requests.post("http://127.0.0.1:8000/chat", json={"query": user_input})
+            response = requests.post(f"{API_URL}/chat", json={"query": user_input})
             bot_answer = response.json().get("answer", "Sorry, no response.")
         except Exception as e:
             bot_answer = f"Error: {e}"
