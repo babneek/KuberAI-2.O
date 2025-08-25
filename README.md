@@ -3,6 +3,14 @@
 KuberAI-2.O is a Streamlit-based financial assistant that helps users learn about and invest in digital gold.  
 It features a chatbot, investment suggestions, and a secure backend using FastAPI and SQLite.
 
+---
+
+## 🚀 Live Demo
+
+Try the app here: [KuberAI-2.O Live Demo](https://kuberai-2o-nrkiiaqurskkptwzjogyty.streamlit.app/login)
+
+---
+
 ## Features
 
 - 💬 **Kuber AI Chatbot**: Ask financial questions and get instant answers.
@@ -12,9 +20,9 @@ It features a chatbot, investment suggestions, and a secure backend using FastAP
 
 ## Tech Stack
 
-- **Frontend**: Streamlit (Python)
-- **Backend**: FastAPI (Python)
-- **Database**: SQLite (via SQLAlchemy)
+- **Frontend:** Streamlit (Python)
+- **Backend:** FastAPI (Python, hosted on Railway)
+- **Database:** SQLite (via SQLAlchemy)
 
 ## Getting Started
 
@@ -27,23 +35,29 @@ cd KuberAI-2.O
 
 ### 2. Install dependencies
 
+#### Frontend
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+cd frontend
 pip install -r requirements.txt
 ```
 
-### 3. Start the backend
+#### Backend
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+### 3. Start backend locally
 
 ```bash
 cd backend
 uvicorn main:app --reload
 ```
 
-### 4. Start the frontend
+### 4. Start frontend locally
 
 ```bash
-cd ../frontend
+cd frontend
 streamlit run app.py
 ```
 
@@ -55,39 +69,27 @@ The investment records are stored in a SQLite database file located at:
 backend/data/gold_investments.db
 ```
 
-### To view or query the database:
-
-#### **Option 1: Using Python**
-
-Simply run the following script from the `backend` folder:
+To view or query the database, run:
 
 ```bash
-python check_db.py
+python backend/check_db.py
 ```
 
-This will print all investment records from the database.
-
-#### **Option 2: Using DB Browser for SQLite**
-
-1. Download [DB Browser for SQLite](https://sqlitebrowser.org/).
-2. Open `backend/data/gold_investments.db`.
-3. Browse and export your investment data.
-
----
+Or use DB Browser for SQLite to open `backend/data/gold_investments.db`.
 
 ## Folder Structure
 
 ```
 KUBERAI-2.O/
-├── .venv/
+├── .env
 ├── backend/
-│   ├── __pycache__/
 │   ├── data/
 │   │   └── gold_investments.db
 │   ├── check_db.py
 │   ├── database.py
 │   ├── main.py
 │   ├── model.py
+│   ├── requirements.txt
 │   └── service.py
 ├── frontend/
 │   ├── assets/
@@ -96,15 +98,33 @@ KUBERAI-2.O/
 │   │   ├── 2_welcome.py
 │   │   ├── 3_chat.py
 │   │   └── 4_invest.py
-│   └── app.py
-├── .env
+│   ├── app.py
+│   └── requirements.txt
 ├── README.md
-└── requirements.txt
 ```
 
-## License
+## Environment Variables
 
-MIT
+- Add your API keys and secrets to the `.env` file in the project root.
+- Example:
+  ```
+  OPENROUTER_API_KEY=your_api_key_here
+  ```
+
+## Deployment Notes
+
+- **Frontend** is deployed on Streamlit Cloud.
+- **Backend** is deployed on Railway and accessible via a public URL.
+- Update frontend API URLs to point to your Railway backend.
+
+## Approach & Challenges
+
+- Modular separation of frontend and backend for maintainability.
+- Used SQLAlchemy for robust database management.
+- Provided clear instructions and relative asset paths for cloud compatibility.
+- **Challenge:** Streamlit Cloud cannot run FastAPI backend locally; backend must be hosted externally.
+- **Challenge:** SQLite is not persistent on Streamlit Cloud; consider using a cloud database for production.
+- **Note:** Sensitive data should use Streamlit Cloud secrets, not `.env` in public repos.
 
 ---
 
