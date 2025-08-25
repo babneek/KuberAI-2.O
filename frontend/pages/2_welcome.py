@@ -3,10 +3,10 @@ import streamlit as st
 st.set_page_config(page_title="Kuber.AI", page_icon="🤖", layout="centered")
 
 st.title("Kuber.AI")
-st.image(
-    r"c:\Users\BABNEEK\OneDrive\Desktop\projects\KuberAI-2.O\frontend\assets\robot.png",
-    width=150
-)
+# st.image(
+#     r"c:\Users\BABNEEK\OneDrive\Desktop\projects\KuberAI-2.O\frontend\assets\robot.png",
+#     width=150
+# )
 
 st.markdown("### Ask me Your Financial Queries")
 st.markdown("Begin your first Chat with Kuber AI :coin: 10")
