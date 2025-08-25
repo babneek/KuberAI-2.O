@@ -64,7 +64,7 @@ if st.button("Invest Now", key="invest_now", use_container_width=True):
         "gold_price": price,
         "weight": weight
     }
-    resp = requests.post("http://127.0.0.1:8000/invest", json=purchase_data)
+    resp = requests.post("https://kuberai-2o-production.up.railway.app/invest", json=purchase_data)
     if resp.status_code == 200 and resp.json().get("status") == "success":
         st.info("Purchase saved to database.")
     else:
