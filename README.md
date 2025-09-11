@@ -128,4 +128,4 @@ KUBERAI-2.O/
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by BABNEEK KAUR**
